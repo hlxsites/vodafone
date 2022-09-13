@@ -1,0 +1,26 @@
+main .breadcrumb-container {
+    padding: 0;
+}
+
+main .breadcrumb-wrapper {
+    max-width: unset;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgb(190, 190, 190);
+    background-color: rgb(255, 255, 255);
+}
+
+main .breadcrumb ul {
+    list-style-type: none;
+    padding: 0px;
+    max-width: 1232px;
+    margin: 0px auto;
+    display: flex;
+    white-space: nowrap;
+    flex-wrap: wrap;
+}
+
+main .breadcrumb svg {
+    width: 20px;
+    height: 20px;
+    stroke: #000;
+}
