@@ -3,7 +3,7 @@ header nav {
   display: grid;
   grid-template:
     'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / 50px 1fr 50px;
+    'sections sections tools' 1fr / 50px 1fr 50px;
   align-items: center;
   padding: 0 2rem;
   position: fixed;
@@ -31,7 +31,6 @@ header .nav-brand {
   grid-area: brand;
   font-size: 22px;
   font-weight: 700;
-  line-height: 1em;
 }
 
 header nav .nav-brand p {
@@ -140,6 +139,12 @@ header nav .nav-tools {
 
 header nav .nav-tools p {
   margin: 0;
+  padding-right: 16px;
+}
+
+header nav .nav-tools p svg {
+  width: 32px;
+  height: 32px;
 }
 
 header nav[aria-expanded='true'] .nav-tools img {
@@ -256,5 +261,11 @@ header nav[aria-expanded='true'] .nav-tools li {
     left: 0;
     padding: 16px;
     box-shadow: 0 0 5px var(text-color);
+  }
+
+  header nav .nav-tools {
+    display: flex;
+    justify-content: flex-end;
+    width: 100px;
   }
 }
