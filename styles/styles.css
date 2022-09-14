@@ -19,6 +19,9 @@
   --highlight-background-color: #ccc;
   --text-color: #000;
 
+  /* the Vodafone red */
+  --red-color: #E60000;
+
   /* fonts */
   --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
@@ -119,12 +122,11 @@ a.button:any-link, button {
   font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
-  background-color: var(--link-color);
+  background-color: var(--red-color);
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
