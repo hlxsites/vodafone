@@ -29,6 +29,14 @@ main .tabs li button {
     border-bottom: 4px solid white;
 }
 
+main .tabs li button::after {
+    content: attr(data-text);
+    height: 0;
+    visibility: hidden;
+    font-weight: 700;
+    display: flex;
+}
+
 main .tabs li button:hover {
     font-weight: 700;
 }

@@ -53,6 +53,10 @@ export default function decorate($block) {
         $button.textContent = title;
         $tab.replaceChildren($button);
 
+        // This attribute is used to prevent layout shift on hover
+        // https://css-tricks.com/bold-on-hover-without-the-layout-shift/
+        $button.setAttribute('data-text', title);
+
         $button.addEventListener('click', () => {
             const $activeButton = $block.querySelector('button.active');
             if ($activeButton !== $tab.children[0]) {

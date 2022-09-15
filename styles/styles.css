@@ -31,7 +31,7 @@
 @font-face {
   font-family: Vodafone;
   src: url("/fonts/vodafone-light.woff") format('woff');
-  font-weight: 200 399;
+  font-weight: 100 399;
 }
 
 
@@ -42,7 +42,7 @@
   --background-color: #fff;
   --overlay-background-color: #262626;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --text-color: rgb(13 13 13);
 
   /* the Vodafone red */
   --red-color: #E60000;
@@ -50,7 +50,7 @@
 
 
   /* fonts */
-  --body-font-family: Vodafone, 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: vodafone, 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -283,4 +283,19 @@ main .video-player iframe.youtube {
 
 main .hidden {
   display: none;
+}
+
+#vodafone-green-network {
+  font-weight: 200;
+  text-align: center;
+  color: rgb(13 13 13);
+}
+
+.default-content-wrapper {
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  color: rgb(13 13 13);
+  padding: 20px;
+  font-weight: 400;
 }
