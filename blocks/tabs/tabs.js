@@ -5,6 +5,8 @@
  * @property {HTMLElement} $content
  */
 
+// import { appendIcon } from '../../scripts/scripts';
+
 /**
  * @param {HTMLElement} $block
  * @return {TabInfo[]}
@@ -48,6 +50,17 @@ export function createTabs($block) {
 export default function decorate($block) {
   const tabs = createTabs($block);
 
+  // handle mobile layout
+  const firstTabTitle = tabs[0].title;
+  const tabButton = document.createElement('button');
+  tabButton.classList.add('mobile-only', 'tab-dropdown-button');
+  tabButton.textContent = firstTabTitle;
+  tabButton.addEventListener('click', () => {
+    $block.querySelector('ul').classList.toggle('hidden');
+  });
+  // appendIcon(tabButton, 'icon-chevron-right');
+  $block.prepend(tabButton);
+
   tabs.forEach((tab, index) => {
     const $button = document.createElement('button');
     const { $tab, title, name } = tab;
@@ -59,6 +72,8 @@ export default function decorate($block) {
     $button.setAttribute('data-text', title);
 
     $button.addEventListener('click', () => {
+      tabButton.innerText = title;
+      $block.querySelector('ul').classList.toggle('hidden');
       const $activeButton = $block.querySelector('button.active');
       if ($activeButton !== $tab.children[0]) {
         $activeButton.classList.remove('active');
