@@ -166,11 +166,9 @@ export function decorateIcons(element = document) {
 
 export function decorateYouTube(element = document) {
   const anchors = element.getElementsByTagName('a');
-  const youTubeAnchors = Array.from(anchors).filter((a) =>
-    a.href.includes('youtu')
-  );
+  const youTubeAnchors = Array.from(anchors).filter((a) => a.href.includes('youtu'));
 
-  youTubeAnchors.forEach(a => {
+  youTubeAnchors.forEach((a) => {
     const embed = a.pathname;
     if (a.origin?.includes('youtu')) {
       const id = embed.split('/').pop();
@@ -181,18 +179,17 @@ export function decorateYouTube(element = document) {
         className = 'youtube';
       } else {
         src = `https://www.youtube.com${id ? `/embed/${id}?rel=0&amp;v=${id}` : embed
-          }`;
+        }`;
       }
       const embedHTML = `<div class="video-player">
       <iframe src="${src}" ${className && `class="${className}"`
-        } webkitallowfullscreen mozallowfullscreen allowfullscreen style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allow="encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy">
+} webkitallowfullscreen mozallowfullscreen allowfullscreen style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allow="encrypted-media; accelerometer; gyroscope; picture-in-picture" scrolling="no" title="Content from Youtube" loading="lazy">
       </iframe>
     </div>`;
       a.insertAdjacentHTML('afterend', embedHTML);
       a.remove();
     }
-  }
-  );
+  });
 }
 
 /**
