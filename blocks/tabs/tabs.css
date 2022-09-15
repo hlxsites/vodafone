@@ -1,0 +1,39 @@
+main .tabs {
+    border-bottom: 1px solid var(--highlight-background-color);
+}
+
+main .tabs ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    list-style: none;
+    justify-content: center;
+}
+
+main .tabs li {
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+main .tabs li button {
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0px;
+    font-size: 20px;
+    padding: 16px 16px 8px;
+    display: block;
+    margin: 0px;
+    color: var(--text-color);
+    background: transparent;
+    border: 0;
+    border-bottom: 4px solid white;
+}
+
+main .tabs li button:hover {
+    font-weight: 700;
+}
+
+main .tabs li button.active {
+    font-weight: 700;
+    border-bottom: 4px solid var(--red-color);
+}
