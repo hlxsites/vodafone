@@ -9,20 +9,20 @@
  * @param {HTMLElement} $block
  * @return {TabInfo[]}
  */
- export function createTabs($block) {
+export function createTabs($block) {
   const $ul = $block.querySelector('ul');
   if (!$ul) {
-      return null;
+    return null;
   }
   /** @type TabInfo[] */
   const tabs = [...$ul.querySelectorAll('li')].map(($li) => {
-      const title = $li.textContent;
-      const name = title.toLowerCase().trim();
-      return {
-          title,
-          name,
-          $tab: $li
-      };
+    const title = $li.textContent;
+    const name = title.toLowerCase().trim();
+    return {
+      title,
+      name,
+      $tab: $li,
+    };
   });
   // move $ul below section div
   $block.replaceChildren($ul);
@@ -31,12 +31,12 @@
   const $wrapper = $block.parentElement;
   const $container = $wrapper.parentElement;
   let $div = $container.nextElementSibling;
-  for (let i = 0; i < tabs.length; i++) {
-      $div.id = tabs[i].name;
-      $div.classList.add('tab-item');
-      $div.classList.add('hidden');
-      tabs[i].$content = $div;
-      $div = $div.nextElementSibling;
+  for (let i = 0; i < tabs.length; i++) { // eslint-disable-line no-plusplus
+    $div.id = tabs[i].name;
+    $div.classList.add('tab-item');
+    $div.classList.add('hidden');
+    tabs[i].$content = $div;
+    $div = $div.nextElementSibling;
   }
   return tabs;
 }
@@ -48,30 +48,30 @@ export default function decorate($block) {
   const tabs = createTabs($block);
 
   tabs.forEach((tab, index) => {
-      const $button = document.createElement('button');
-      const { $tab, title, name } = tab;
-      $button.textContent = title;
-      $tab.replaceChildren($button);
+    const $button = document.createElement('button');
+    const { $tab, title, name } = tab;
+    $button.textContent = title;
+    $tab.replaceChildren($button);
 
-      $button.addEventListener('click', () => {
-          const $activeButton = $block.querySelector('button.active');
-          if ($activeButton !== $tab.children[0]) {
-              $activeButton.classList.remove('active');
-              $button.classList.add('active');
+    $button.addEventListener('click', () => {
+      const $activeButton = $block.querySelector('button.active');
+      if ($activeButton !== $tab.children[0]) {
+        $activeButton.classList.remove('active');
+        $button.classList.add('active');
 
-              tabs.forEach((t) => {
-                  if (name === t.name) {
-                      t.$content.classList.remove('hidden');
-                  } else {
-                      t.$content.classList.add('hidden');
-                  }
-              });
+        tabs.forEach((t) => {
+          if (name === t.name) {
+            t.$content.classList.remove('hidden');
+          } else {
+            t.$content.classList.add('hidden');
           }
-      });
-
-      if (index === 0) {
-          $button.classList.add('active');
-          tab.$content.classList.remove('hidden');
+        });
       }
+    });
+
+    if (index === 0) {
+      $button.classList.add('active');
+      tab.$content.classList.remove('hidden');
+    }
   });
 }
