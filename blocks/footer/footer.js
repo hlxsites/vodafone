@@ -16,4 +16,12 @@ export default async function decorate(block) {
   footer.innerHTML = html;
   await decorateIcons(footer);
   block.append(footer);
+
+  const socialMediaContainer = block.children[0].children[0];
+  const linksContainer = block.children[0].children[1];
+  const copyrightContainer = block.children[0].children[2];
+
+  socialMediaContainer.classList.add('socialmedia-container');
+  linksContainer.classList.add('links-container');
+  copyrightContainer.classList.add('copyright-container');
 }

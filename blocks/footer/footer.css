@@ -23,26 +23,73 @@ footer .footer div div {
     flex: 1 1 0px;
 } */
 
+.links-container {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+}
+
+.links-container h2 {
+    font-size: 28px;
+    color: white;
+}
+
+.socialmedia-container ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 20px;
+}
+
+.socialmedia-container li:last-child {
+    justify-self: flex-end;
+}
+
+.socialmedia-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-community-or-foundation {
+    padding-left: 20px;
+    stroke: white;
+    fill: white;
+}
+
 footer .footer ul {
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
+    padding: 0;
+}
+
+.socialmedia-container a {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    color: white;
+}
+
+.copyright-container {
+    color: rgb(190 190 190);
+    font-weight: 200;
+    margin-top: 20px;
 }
 
 footer .footer li {
-    color: #ccc;
+    color: rgb(190 190 190);
+    font-size: var(--body-font-size-s);
+    font-weight: 300;
+    margin-bottom: 8px;
+    line-height: 26px;
 }
+
 footer .footer a {
     color: inherit;
 }
 
 footer .footer p {
     margin: 0;
-}
-
-footer .footer h2 {
-    margin: 0;
-    color: #fff;
 }
 
 footer .footer svg {
