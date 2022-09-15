@@ -253,3 +253,7 @@ main .video-player iframe.youtube {
   height: 100%;
   position: absolute;
 }
+
+main .hidden {
+  display: none;
+}
