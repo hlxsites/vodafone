@@ -25,6 +25,8 @@ main .tabs li button {
     margin: 0px;
     color: var(--text-color);
     background: transparent;
+    border: 0;
+    border-bottom: 4px solid white;
 }
 
 main .tabs li button:hover {
@@ -33,6 +35,5 @@ main .tabs li button:hover {
 
 main .tabs li button.active {
     font-weight: 700;
-    border: 0;
     border-bottom: 4px solid var(--red-color);
 }
