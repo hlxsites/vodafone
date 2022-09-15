@@ -166,6 +166,10 @@ header nav[aria-expanded='true'] .nav-tools li {
   header nav {
     display: flex;
     justify-content: space-between;
+    position: initial;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: auto;
     height: var(--nav-height);
     padding: 16px 2rem;
   }
@@ -216,10 +220,18 @@ header nav[aria-expanded='true'] .nav-tools li {
   header nav .nav-sections > ul > li {
     padding: 0 16px;
     position: relative;
-    font-size: 16px;
+    font-size: 22px;
     margin: 0;
     cursor: pointer;
     padding-top: 0;
+  }
+
+  header nav .nav-sections > ul > li > u {
+    text-decoration: none;
+  }
+
+  header nav .nav-sections > ul > li > u:hover {
+    color: red;
   }
 
   header nav .nav-sections > ul > li > p {
