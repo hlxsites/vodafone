@@ -163,6 +163,12 @@ export function decorateIcons(element = document) {
     }
   });
 }
+export function hideYouTube(element = document) {
+  const anchors = element.getElementsByTagName('a');
+  const youTubeAnchors = Array.from(anchors).filter((a) => a.href.includes('youtu'));
+
+  youTubeAnchors.forEach((a) => { a.style.display = 'none'; });
+}
 
 export function decorateYouTube(element = document) {
   const anchors = element.getElementsByTagName('a');
@@ -688,6 +694,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  hideYouTube(main);
 }
 
 /**
@@ -715,7 +722,6 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-  decorateYouTube(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
