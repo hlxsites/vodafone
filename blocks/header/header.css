@@ -118,7 +118,7 @@ header nav .nav-sections ul  {
   font-weight: 500;
   list-style: none;
   padding-left: 0;
-} 
+}
 
 header nav .nav-sections li {
   font-size: 20px;
@@ -133,7 +133,8 @@ header nav[aria-expanded='true'] .nav-sections {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
-  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
   height: 22px;
 }
 
@@ -206,7 +207,7 @@ header nav[aria-expanded='true'] .nav-tools li {
     width: unset;
     margin: 0;
   }
-  
+
   header nav[aria-expanded='true'] .nav-sections ol {
     display: flex;
     min-height: unset;
@@ -241,7 +242,7 @@ header nav[aria-expanded='true'] .nav-tools li {
     height: 0;
     position: absolute;
     border-left: 15px solid transparent;
-    border-right: 15px solid transparent;    
+    border-right: 15px solid transparent;
     border-bottom: 15px solid var(--highlight-background-color);
     top: -15px;
     left: 20px;
