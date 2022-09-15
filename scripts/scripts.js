@@ -670,6 +670,17 @@ function loadFooter(footer) {
 }
 
 /**
+ * Adds an icon to the element. Need to call decorateIcons after.
+ * @param element The element to append the icon to
+ * @param iconName The name of the icon
+ */
+export function appendIcon(element, iconName) {
+  const icon = document.createElement('span');
+  icon.classList.add('icon', iconName);
+  element.append(icon);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */

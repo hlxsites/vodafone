@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons } from '../../scripts/scripts.js';
+import { readBlockConfig, decorateIcons, appendIcon } from '../../scripts/scripts.js';
 
 /**
  * loads and decorates the footer
@@ -24,4 +24,14 @@ export default async function decorate(block) {
   socialMediaContainer.classList.add('socialmedia-container');
   linksContainer.classList.add('links-container');
   copyrightContainer.classList.add('copyright-container');
+
+  // Add icons to link section titles
+  linksContainer.querySelectorAll('h2').forEach((h2) => {
+    h2.classList.add('link-hidden');
+    appendIcon(h2, 'icon-chevron-right');
+    h2.addEventListener('click', () => {
+      h2.classList.toggle('link-hidden');
+    });
+  });
+  decorateIcons(linksContainer);
 }
