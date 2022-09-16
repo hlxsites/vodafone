@@ -5,7 +5,7 @@
  * @property {HTMLElement} $content
  */
 
-// import { appendIcon } from '../../scripts/scripts';
+import { appendIcon, decorateIcons } from '../../scripts/scripts.js';
 
 /**
  * @param {HTMLElement} $block
@@ -47,18 +47,21 @@ export function createTabs($block) {
 /**
 * @param {HTMLElement} $block
 */
-export default function decorate($block) {
+export default async function decorate($block) {
   const tabs = createTabs($block);
 
   // handle mobile layout
   const firstTabTitle = tabs[0].title;
   const tabButton = document.createElement('button');
   tabButton.classList.add('mobile-only', 'tab-dropdown-button');
-  tabButton.textContent = firstTabTitle;
+  tabButton.innerHTML = `<span>${firstTabTitle}</span>`;
   tabButton.addEventListener('click', () => {
     $block.querySelector('ul').classList.toggle('hidden');
+    tabButton.classList.toggle('menu-open');
   });
-  // appendIcon(tabButton, 'icon-chevron-right');
+  appendIcon(tabButton, 'icon-chevron-right');
+  await decorateIcons(tabButton);
+
   $block.prepend(tabButton);
   $block.querySelector('ul').classList.add('hidden');
 
@@ -73,7 +76,8 @@ export default function decorate($block) {
     $button.setAttribute('data-text', title);
 
     $button.addEventListener('click', () => {
-      tabButton.innerText = title;
+      tabButton.querySelector('span').innerText = title;
+      tabButton.classList.toggle('menu-open');
       $block.querySelector('ul').classList.toggle('hidden');
       const $activeButton = $block.querySelector('button.active');
       if ($activeButton !== $tab.children[0]) {
