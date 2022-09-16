@@ -29,6 +29,14 @@ main .tabs li button {
     border-bottom: 4px solid white;
 }
 
+main .tabs li button::after {
+    content: attr(data-text);
+    height: 0;
+    visibility: hidden;
+    font-weight: 700;
+    display: flex;
+}
+
 main .tabs li button:hover {
     font-weight: 700;
 }
@@ -36,4 +44,95 @@ main .tabs li button:hover {
 main .tabs li button.active {
     font-weight: 700;
     border-bottom: 4px solid var(--red-color);
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .mobile-only {
+        display: initial;
+    }
+
+    .tabs-wrapper {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .tabs-wrapper ul.hidden {
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .tab-dropdown-button:hover {
+        background: none;
+    }
+
+    .tab-dropdown-button:focus {
+        background: none;
+    }
+
+    .tab-dropdown-button {
+        margin: 0;
+        width: 100%;
+        background: none;
+        color: black;
+        border-bottom: 4px solid red;
+        height: 50px;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    main .tabs ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 1;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
+    }
+
+    main .tabs li button {
+        width: 100%;
+    }
+
+    main .tabs li button {
+        font-weight: initial;
+    }
+
+    main .tabs li button.active {
+        background: rgb(242, 242, 242);
+        border-bottom: none;
+        font-weight: initial;
+    }
+
+    main .tabs li button:hover {
+        background: rgb(242, 242, 242);
+        border-bottom: none;
+        font-weight: initial;
+    }
+
+    .tab-dropdown-button .icon-chevron-right {
+        position: relative;
+    }
+
+    .tab-dropdown-button .icon-chevron-right svg {
+        width: 20px;
+        height: 20px;
+        fill: black;
+        stroke: black;
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        margin-left: 10px;
+        transform: rotate(90deg);
+        transition: transform 200ms;
+    }
+
+    .menu-open .icon-chevron-right svg {
+        transform: rotate(270deg);
+    }
 }

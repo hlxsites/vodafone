@@ -10,6 +10,31 @@
  * governing permissions and limitations under the License.
  */
 
+@font-face {
+  font-family: Vodafone;
+  src: url("/fonts/vodafone-regular.woff") format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vodafone;
+  src: url("/fonts/vodafone-bold.woff") format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vodafone;
+  src: url("/fonts/vodafone-extra-bold.woff") format('woff');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: Vodafone;
+  src: url("/fonts/vodafone-light.woff") format('woff');
+  font-weight: 100 399;
+}
+
+
  :root {
   /* colors */
   --link-color: #035fe6;
@@ -17,13 +42,15 @@
   --background-color: #fff;
   --overlay-background-color: #262626;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --text-color: rgb(13 13 13);
 
   /* the Vodafone red */
   --red-color: #E60000;
 
+
+
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: vodafone, 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -118,7 +145,7 @@ a.button:any-link, button {
   border: 2px solid transparent;
   padding: 5px 30px;
   text-align: center;
-  font-style: normal; 
+  font-style: normal;
   font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
@@ -143,7 +170,7 @@ a.button.secondary, button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
-} 
+}
 
 
 main input {
@@ -152,7 +179,7 @@ main input {
   max-width: 50rem;
   display: block;
   margin-bottom: 1rem;
-  padding: 0.75rem 0.6rem;    
+  padding: 0.75rem 0.6rem;
   border-radius: 0.25rem;
   box-sizing: border-box;
   border: 1px solid var(--text-color);
@@ -209,7 +236,7 @@ main img {
 @media (min-width: 600px) {
   main .section {
     padding: 64px 32px;
-  }  
+  }
 }
 
 @media (min-width: 900px) {
@@ -221,7 +248,7 @@ main img {
     --heading-font-size-s: 20px;
     --heading-font-size-xs: 18px;
   }
-  
+
   .section > div {
     max-width: 1200px;
     margin: auto;
@@ -243,6 +270,7 @@ main .video-player {
   height: 0;
   position: relative;
   padding-bottom: 56.25%;
+  margin-bottom: 1rem
 }
 
 main .video-player iframe.youtube {
@@ -256,4 +284,19 @@ main .video-player iframe.youtube {
 
 main .hidden {
   display: none;
+}
+
+#vodafone-green-network {
+  font-weight: 200;
+  text-align: center;
+  color: rgb(13 13 13);
+}
+
+.default-content-wrapper {
+  text-align: center;
+  font-size: 18px;
+  line-height: 26px;
+  color: rgb(13 13 13);
+  padding: 20px;
+  font-weight: 400;
 }

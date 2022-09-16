@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons } from '../../scripts/scripts.js';
+import { readBlockConfig, decorateIcons, appendIcon } from '../../scripts/scripts.js';
 
 /**
  * collapses all open nav sections
@@ -40,6 +40,8 @@ export default async function decorate(block) {
     const navSections = [...nav.children][1];
     if (navSections) {
       navSections.querySelectorAll(':scope > ul > li').forEach((navSection) => {
+        appendIcon(navSection, 'icon-chevron-right');
+
         if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
         navSection.addEventListener('click', () => {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
@@ -51,13 +53,30 @@ export default async function decorate(block) {
 
     // hamburger for mobile
     const hamburger = document.createElement('div');
+    const backgroundDim = document.createElement('div');
+    backgroundDim.classList.add('dim-background');
     hamburger.classList.add('nav-hamburger');
     hamburger.innerHTML = '<div class="nav-hamburger-icon"></div>';
     hamburger.addEventListener('click', () => {
       const expanded = nav.getAttribute('aria-expanded') === 'true';
-      document.body.style.overflowY = expanded ? '' : 'hidden';
-      nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      backgroundDim.classList.toggle('active');
+      if (!expanded) {
+        document.body.style.overflowY = 'hidden';
+        nav.setAttribute('aria-expanded', 'true');
+        setTimeout(() => {
+          nav.classList.add('animate-in');
+        }, 0);
+      } else {
+        nav.classList.remove('animate-in');
+        nav.classList.add('animate-out');
+        setTimeout(() => {
+          nav.classList.remove('animate-out');
+          document.body.style.overflowY = '';
+          nav.setAttribute('aria-expanded', 'false');
+        }, 200);
+      }
     });
+    document.body.prepend(backgroundDim);
     nav.prepend(hamburger);
     nav.setAttribute('aria-expanded', 'false');
     decorateIcons(nav);
