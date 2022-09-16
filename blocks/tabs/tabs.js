@@ -44,26 +44,36 @@ export function createTabs($block) {
   return tabs;
 }
 
+async function createTabDropdown(tabs) {
+  const firstTabTitle = tabs[0].title;
+  const tabButton = document.createElement('button');
+  tabButton.classList.add('mobile-only', 'tab-dropdown-button');
+  tabButton.innerHTML = `<span>${firstTabTitle}</span>`;
+  appendIcon(tabButton, 'icon-chevron-right');
+  await decorateIcons(tabButton);
+  return tabButton;
+}
+
 /**
 * @param {HTMLElement} $block
 */
 export default async function decorate($block) {
   const tabs = createTabs($block);
 
-  // handle mobile layout
-  const firstTabTitle = tabs[0].title;
-  const tabButton = document.createElement('button');
-  tabButton.classList.add('mobile-only', 'tab-dropdown-button');
-  tabButton.innerHTML = `<span>${firstTabTitle}</span>`;
-  tabButton.addEventListener('click', () => {
-    $block.querySelector('ul').classList.toggle('hidden');
-    tabButton.classList.toggle('menu-open');
-  });
-  appendIcon(tabButton, 'icon-chevron-right');
-  await decorateIcons(tabButton);
+  const tabButton = await createTabDropdown(tabs);
 
+  // Set initial state for tab dropdown on mobile
   $block.prepend(tabButton);
   $block.querySelector('ul').classList.add('hidden');
+
+  const toggleDropdownOpen = () => {
+    $block.querySelector('ul').classList.toggle('hidden');
+    tabButton.classList.toggle('menu-open');
+  };
+
+  tabButton.addEventListener('click', () => {
+    toggleDropdownOpen(tabButton, $block);
+  });
 
   tabs.forEach((tab, index) => {
     const $button = document.createElement('button');
@@ -77,8 +87,7 @@ export default async function decorate($block) {
 
     $button.addEventListener('click', () => {
       tabButton.querySelector('span').innerText = title;
-      tabButton.classList.toggle('menu-open');
-      $block.querySelector('ul').classList.toggle('hidden');
+      toggleDropdownOpen(tabButton, $block);
       const $activeButton = $block.querySelector('button.active');
       if ($activeButton !== $tab.children[0]) {
         $activeButton.classList.remove('active');
