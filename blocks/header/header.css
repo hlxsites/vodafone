@@ -139,6 +139,8 @@ header nav .nav-sections ul  {
 }
 
 header nav .nav-sections li {
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
@@ -160,6 +162,23 @@ header nav[aria-expanded='true'] .nav-sections {
   align-self: flex-start;
   background: white;
   height: 100%;
+}
+
+header nav .nav-sections .icon {
+  position: relative;
+  width: 25px;
+  padding-right: 20px;
+}
+
+header nav .nav-sections .icon svg {
+  fill: black;
+  stroke: black;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  margin-left: 10px;
 }
 
 /* tools */
@@ -321,5 +340,9 @@ header nav[aria-expanded='true'] .nav-tools li {
     display: flex;
     justify-content: flex-end;
     width: 100px;
+  }
+
+  header nav .nav-sections .icon {
+    display: none;
   }
 }
