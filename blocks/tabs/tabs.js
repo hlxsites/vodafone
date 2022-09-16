@@ -60,6 +60,7 @@ export default function decorate($block) {
   });
   // appendIcon(tabButton, 'icon-chevron-right');
   $block.prepend(tabButton);
+  $block.querySelector('ul').classList.add('hidden');
 
   tabs.forEach((tab, index) => {
     const $button = document.createElement('button');
