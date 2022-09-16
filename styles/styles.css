@@ -270,6 +270,7 @@ main .video-player {
   height: 0;
   position: relative;
   padding-bottom: 56.25%;
+  margin-bottom: 1rem
 }
 
 main .video-player iframe.youtube {
