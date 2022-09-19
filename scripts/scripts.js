@@ -351,7 +351,7 @@ export async function getExperimentConfig(experimentId) {
     });
 
     return (config);
-  } 
+  }
   return null;
 }
 
@@ -412,7 +412,6 @@ async function decorateTesting() {
     console.log('error testing', e);
   }
 }
-
 
 /**
  * Gets placeholders object
@@ -819,10 +818,11 @@ async function loadPage(doc) {
   loadDelayed(doc);
 
   if (
-      window.location.hostname.endsWith('hlx.page') ||
-      window.location.hostname === 'localhost'
+    window.location.hostname.endsWith('hlx.page')
+    || window.location.hostname === 'localhost'
   ) {
-      import('../../tools/preview/preview.js');
+    // eslint-disable-next-line import/no-unresolved
+    import('../../tools/preview/preview.js');
   }
 }
 
